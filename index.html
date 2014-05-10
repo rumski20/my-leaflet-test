@@ -21,11 +21,24 @@ html, body, #map {
 <div id="map"></div>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script> 
 <script>
-	var map = L.map('map').setView([44.98499999901176, -93.27099999936763], 12);
-        L.tileLayer('http://{s}.tiles.mapbox.com/v3/rumski20.i6pp2mja/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18
-}).addTo(map);
+	var map = L.map('map').setView([44.97177944969965, -93.2433839753503], 18);
+    L.tileLayer('http://{s}.tiles.mapbox.com/v3/rumski20.i6pp2mja/{z}/{x}/{y}.png', {
+    	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    	maxZoom: 18
+	}).addTo(map);
+
+    var marker = L.marker([44.97177944969965, -93.2433839753503]).addTo(map);
+
+    var popup = L.popup();
+
+	function onMapClick(e) {
+	    popup
+	        .setLatLng(e.latlng)
+	        .setContent("You clicked the map at " + e.latlng.toString())
+	        .openOn(map);
+	}
+
+	map.on('click', onMapClick);
 </script>
 </body>
 </html>
