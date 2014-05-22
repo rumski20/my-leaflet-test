@@ -66,8 +66,12 @@
             console.log( key + ": " + val );
             if ( key == "Condition")
                 $("#my-popup-content").append( $("#conditionDiv"));
-            else if (key == "TREE_ID" || key == "d_SPECIES") {
-                c = "<p><span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span></p>";
+            else if (key == "TREE_ID" ) {
+                c = "<p><span class='my-keys'>Tree ID</span><span class='my-vals'>"+val+"</span></p>";
+                $("#my-popup-content").append(c);
+            }
+            else if (key == "d_SPECIES") {
+                c = "<p><span class='my-keys'>Species</span><span class='my-vals'>"+val+"</span></p>";
                 $("#my-popup-content").append(c);
             }
         });
