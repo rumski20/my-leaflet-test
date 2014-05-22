@@ -6,5 +6,15 @@ html, body, #map {
     height: 100%;
 }
 #my-popup {
-    height: 300px;
+    height: 150px;
+}
+#my-popup-footer > button {
+    padding: 5px;
+}
+.my-keys {
+    color: #8e8e8e;
+    padding-right: 1em;
+}
+#my-popup-content > span {
+    padding: 1em 1em;
 }
