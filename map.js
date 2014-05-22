@@ -77,10 +77,10 @@ function configurePopup(results) {
         console.log(key + ": " + val);
         if (key == "TREE_ID") {
             c = "<p><span class='my-keys'>Tree ID:</span><span class='my-vals'>" + val + "</span></p>";
-            $("#my-popup-content").prepend(c);
+            $("#my-popup-content").append(c);
         } else if (key == "d_SPECIES") {
             c = "<p><span class='my-keys'>Species:</span><span class='my-vals'>" + val + "</span></p>";
-            $("#my-popup-content").prepend(c);
+            $("#my-popup-content").append(c);
         }
     });
 }
