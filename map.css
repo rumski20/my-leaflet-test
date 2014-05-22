@@ -1,6 +1,8 @@
 body {
     padding: 0;
     margin: 0;
+    font-size: 120%;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 html, body, #map {
     height: 100%;

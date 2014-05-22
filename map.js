@@ -38,7 +38,9 @@ map.on("click", function(e) {
             popupText =  "<b>" + (data.results[0].attributes.EVENTID || data.results[0].attributes.NAME) + "<b>";*/
 
             //Add Popup to the map when the mouse was clicked at
-            var popup = L.popup()
+            var popup = L.popup({
+                maxWidth: 260
+            })
                 .setLatLng(e.latlng)
                 .setContent($("#my-popup").html())
                 .openOn(map);
@@ -48,7 +50,7 @@ map.on("click", function(e) {
 
 
 
-/*    // find location
+// find location
 map.locate({
     setView: true,
     maxZoom: 20
@@ -67,7 +69,7 @@ function onLocationError(e) {
 }
 
 map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);*/
+map.on('locationerror', onLocationError);
 
 // configure popup
 
