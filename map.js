@@ -72,7 +72,8 @@ map.on('locationerror', onLocationError);*/
 
 function configurePopup(results) {
     var butes = results.attributes;
-    $("#my-popup-content").emtpy();
+    if ( $("#my-popup-content") )
+        $("#my-popup-content").emtpy();
     $.each(butes, function(key, val) {
         console.log(key + ": " + val);
         if (key == "TREE_ID") {
