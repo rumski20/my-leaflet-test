@@ -110,7 +110,7 @@ function submitEdits() {
                 var updatedFeatures = featureSet.features[0];
                 updatedFeatures.attributes.Condition = $("#conditionSelect :selected").val();
                 updatedFeatures.attributes.Inspected = "y";
-                updatedFeatures.attributes.Inspected = getTheDate();
+                updatedFeatures.attributes.Date = getTheDate();
                 console.log(updatedFeatures.attributes);
                 campusTreesFL.applyEdits(null, [updatedFeatures], null);
             }
