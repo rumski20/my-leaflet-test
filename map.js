@@ -7,7 +7,7 @@
     // add tile layer (mapbox basemap)
     L.tileLayer('http://{s}.tiles.mapbox.com/v3/rumski20.i6pp2mja/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18
+        maxZoom: 20
     }).addTo(map);
 
     // add campus trees dynamic layer
@@ -22,15 +22,15 @@
         dynLayer.identify(e.latlng, function(data) {
             console.log(data.results);
             if(data.results.length == 1) {
-                //configurePopup(data.results[0]);
+                configurePopup(data.results[0]);
               /*//Popup text should be in html format.  Showing the Storm Name with the type
                 popupText =  "<b>" + (data.results[0].attributes.EVENTID || data.results[0].attributes.NAME) + "<b>";*/
 
                 //Add Popup to the map when the mouse was clicked at
-/*                var popup = L.popup()
+                var popup = L.popup()
                     .setLatLng(e.latlng)
-                    .setContent(popupText)
-                    .openOn(map);*/
+                    .setContent( $("#my-popup") )
+                    .openOn(map);
             }
         });
     });
@@ -40,7 +40,7 @@
     // find location
     map.locate({
         setView: true,
-        maxZoom: 18
+        maxZoom: 20
     });
     
     function onLocationFound(e) {
@@ -48,7 +48,6 @@
         L.marker(e.latlng).addTo(map)
             .bindPopup("You are here! <br>Or at least nearby.").openPopup();
         L.circle(e.latlng, radius).addTo(map);
-
     }
 
     function onLocationError(e) {
@@ -60,4 +59,16 @@
     map.on('locationerror', onLocationError);
 
     // configure popup
-
+    function configurePopup(results) {
+        var butes = results.attributes;
+        var c;
+        $.each(butes, function (key, val) {
+            console.log( key + ": " + val );
+            if ( key == "Condition"){
+                $("#my-popup-content").append( $("#conditionDiv"));
+            else if (key == "TREE_ID" || key == "d_SPECIES") {
+                c = "<p><span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span></p>";
+                $("#my-popup-content").append(c);
+            }
+        })
+    }
