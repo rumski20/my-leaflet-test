@@ -112,7 +112,7 @@ function submitEdits() {
                 updatedFeatures.attributes.Inspected = "y";
                 updatedFeatures.attributes.Inspected = getTheDate();
                 console.log(updatedFeatures.attributes);
-                firePerimeterFL.applyEdits(null, [updatedFeatures], null);
+                campusTreesFL.applyEdits(null, [updatedFeatures], null);
             }
         });
     });
