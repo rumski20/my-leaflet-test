@@ -64,11 +64,11 @@
         var c;
         $.each(butes, function (key, val) {
             console.log( key + ": " + val );
-            if ( key == "Condition"){
+            if ( key == "Condition")
                 $("#my-popup-content").append( $("#conditionDiv"));
             else if (key == "TREE_ID" || key == "d_SPECIES") {
                 c = "<p><span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span></p>";
                 $("#my-popup-content").append(c);
             }
-        })
+        });
     }
