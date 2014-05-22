@@ -61,7 +61,7 @@
     // configure popup
     function configurePopup(results) {
         var butes = results.attributes;
-        var c;
+        var c = "";
         $.each(butes, function (key, val) {
             console.log( key + ": " + val );
             if ( key == "Condition")
