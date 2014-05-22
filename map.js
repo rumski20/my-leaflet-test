@@ -31,7 +31,6 @@
                     .setLatLng(e.latlng)
                     .setContent( $("#my-popup").html() )
                     .openOn(map);
-                console.log(popup.getContent());
             }
         });
     });
@@ -65,15 +64,13 @@
         $("#my-popup-content").empty();
         $.each(butes, function (key, val) {
             console.log( key + ": " + val );
-            if ( key == "Condition")
-                $("#my-popup-content").append( $("#conditionDiv"));
-            else if (key == "TREE_ID" ) {
+            if (key == "TREE_ID" ) {
                 c = "<p><span class='my-keys'>Tree ID</span><span class='my-vals'>"+val+"</span></p>";
-                $("#my-popup-content").append(c);
+                $("#my-popup-content").prepend(c);
             }
             else if (key == "d_SPECIES") {
                 c = "<p><span class='my-keys'>Species</span><span class='my-vals'>"+val+"</span></p>";
-                $("#my-popup-content").append(c);
+                $("#my-popup-content").prepend(c);
             }
         });
     }
