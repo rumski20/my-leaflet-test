@@ -86,19 +86,18 @@ function configurePopup(results) {
 }
 
 map.on("popupopen", function(evt) {
-    currentPopup = evt.popup
+    currentPopup = evt.popup;
 });
 
 function hidePopup() {
-    if (currentPopup != null)
+    if (currentPopup !== null)
         currentPopup._source.closePopup();
 }
 
 
 function submitEdits() {
-    require([
-      "esri/tasks/query" 
-    ], function(FeatureLayer, Query, ... ) {
+    require([ "esri/tasks/query" ], 
+    function(Query) {
 
         var query = new Query();
         query.objectIds = [currentAttributes.OBJECTID];
