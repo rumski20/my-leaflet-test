@@ -1,10 +1,10 @@
-var currentPopup, currentAttributes;
+var currentPopup, currentAttributes, campusTreesFL;
 
 // arc stuff
 require([
   "esri/layers/FeatureLayer", 
 ], function(FeatureLayer) {
-  var campusTreesFL = new FeatureLayer("http://maps.northpointgis.com/arcgis/rest/services/campus_trees/FeatureServer/0", 
+  campusTreesFL = new FeatureLayer("http://maps.northpointgis.com/arcgis/rest/services/campus_trees/FeatureServer/0", 
     {
         refreshInterval: 0.1,
         visible: false
@@ -71,9 +71,9 @@ map.on('locationerror', onLocationError);*/
 // configure popup
 
 function configurePopup(results) {
-    var butes = results.attributes;
+    currentAttributes = results.attributes;
     $("#my-popup-content").empty();
-    $.each(butes, function(key, val) {
+    $.each(currentAttributes, function(key, val) {
         console.log(key + ": " + val);
         if (key == "TREE_ID") {
             c = "<p><span class='my-keys'>Tree ID:</span><span class='my-vals'>" + val + "</span></p>";
@@ -96,5 +96,18 @@ function hidePopup() {
 
 
 function submitEdits() {
-  firePerimeterFL.applyEdits(null, [targetGraphic], null);
+    require([
+      "esri/tasks/query" 
+    ], function(FeatureLayer, Query, ... ) {
+
+        var query = new Query();
+        query.objectIds = [currentAttributes.OBJECTID];
+        query.outFields = [ "*" ];
+        // Query for the features with the given object ID
+        campusTreesFL.queryFeatures(query, function(featureSet) {
+            console.log(featureSet);
+        });
+    });
+/*    $("#conditionSelect :selected").val()
+  firePerimeterFL.applyEdits(null, [targetGraphic], null);*/
 }
