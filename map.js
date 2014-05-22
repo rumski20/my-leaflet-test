@@ -61,13 +61,14 @@
     // configure popup
     function configurePopup(results) {
         var butes = results.attributes;
+        $("#my-popup-content").empty();
         var c = "";
         $.each(butes, function (key, val) {
             console.log( key + ": " + val );
             if ( key == "Condition")
                 $("#my-popup-content").append( $("#conditionDiv"));
             else if (key == "TREE_ID" || key == "d_SPECIES") {
-                c = "<p><span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span></p>";
+                c = "<span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span>";
                 $("#my-popup-content").append(c);
             }
         });
