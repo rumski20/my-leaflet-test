@@ -57,10 +57,8 @@ map.locate({
 });
 
 function onLocationFound(e) {
-    var radius = e.accuracy / 2;
     L.marker(e.latlng).addTo(map)
         .bindPopup("You are here! <br>Or at least nearby.").openPopup();
-    L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
