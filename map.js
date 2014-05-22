@@ -1,5 +1,5 @@
     //popup template
-    var template = "<h6>{TREE_ID}</h6><p>Species: {d_SPECIES}<br>DBH: {DBH2014ORP}</p>";
+    var template = "<h4>{TREE_ID}</h4><p>Species: {d_SPECIES}<br>DBH: {DBH2014ORP}</p>";
 
     // create map
     var map = L.map('map');
