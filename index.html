@@ -1,46 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Basic Leaflet Map</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-
-<style type="text/css">
-body {
-	padding: 0;
-	margin: 0;
-}
-html, body, #map {
-	height: 100%;
-}
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-</head>
-<body>
-<div id="map"></div>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script> 
-<script>
-	var map = L.map('map').setView([44.97177944969965, -93.2433839753503], 18);
-    L.tileLayer('http://{s}.tiles.mapbox.com/v3/rumski20.i6pp2mja/{z}/{x}/{y}.png', {
-    	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    	maxZoom: 18
-	}).addTo(map);
-
-    var marker = L.marker([44.97177944969965, -93.2433839753503]).addTo(map)
-        .bindPopup('Here we are!.')
-        .openPopup();
-
-    var popup = L.popup();
-
-	function onMapClick(e) {
-	    popup
-	        .setLatLng(e.latlng)
-	        .setContent("You clicked the map at " + e.latlng.toString())
-	        .openOn(map);
-	}
-
-	map.on('click', onMapClick);
-</script>
-</body>
+    <head>
+        <title>Campus Trees</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="map.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    </head>
+    <body>
+        <div id="map"></div>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script> 
+        <script src="map.js"></script>
+    </body>
 </html>
