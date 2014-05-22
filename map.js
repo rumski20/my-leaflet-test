@@ -1,7 +1,7 @@
     //popup template
     var template = "<h6>{TREE_ID}</h6>"
                     "<p>Species: {d_SPECIES}<br>"
-                    "DBH: {DBH2014ORP}</p>"
+                    "DBH: {DBH2014ORP}</p>";
 
     // create map
     var map = L.map('map');
@@ -18,17 +18,21 @@
             layer.bindPopup(L.Util.template(template, feature.properties));
         }
     }).addTo(map);
+    
+    
 
     // find location
+    map.locate({
+        setView: true,
+        maxZoom: 18
+    });
+    
     function onLocationFound(e) {
         var radius = e.accuracy / 2;
         L.marker(e.latlng).addTo(map)
             .bindPopup("You are here! <br>Or at least nearby.").openPopup();
         L.circle(e.latlng, radius).addTo(map);
-        map.locate({
-            setView: true,
-            maxZoom: 18
-        });
+
     }
 
     function onLocationError(e) {
