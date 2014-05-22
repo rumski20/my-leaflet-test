@@ -31,6 +31,7 @@
                     .setLatLng(e.latlng)
                     .setContent( $("#my-popup")[0] )
                     .openOn(map);
+                console.log(popup.getContent());
             }
         });
     });
