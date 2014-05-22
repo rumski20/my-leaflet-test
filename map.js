@@ -61,15 +61,15 @@
     // configure popup
     function configurePopup(results) {
         var butes = results.attributes;
-        $("#my-popup-content").empty();
+        var c = "";
         $.each(butes, function (key, val) {
             console.log( key + ": " + val );
             if (key == "TREE_ID" ) {
-                c = "<p><span class='my-keys'>Tree ID</span><span class='my-vals'>"+val+"</span></p>";
+                c = "<p><span class='my-keys'>Tree ID:</span><span class='my-vals'>"+val+"</span></p>";
                 $("#my-popup-content").prepend(c);
             }
             else if (key == "d_SPECIES") {
-                c = "<p><span class='my-keys'>Species</span><span class='my-vals'>"+val+"</span></p>";
+                c = "<p><span class='my-keys'>Species:</span><span class='my-vals'>"+val+"</span></p>";
                 $("#my-popup-content").prepend(c);
             }
         });
