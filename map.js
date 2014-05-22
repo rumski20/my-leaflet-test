@@ -10,12 +10,30 @@
         maxZoom: 18
     }).addTo(map);
 
-    // add campus trees feature layer
-    L.esri.featureLayer("http://maps.northpointgis.com/arcgis/rest/services/campus_trees/FeatureServer/0", {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(L.Util.template(template, feature.properties));
-        }
-    }).addTo(map);
+    // add campus trees dynamic layer
+    dynLayer = L.esri.dynamicMapLayer("http://maps.northpointgis.com/arcgis/rest/services/campus_trees/MapServer/", {
+        opacity : 0.8,
+        layers: "0"
+    });
+    map.addLayer(dynLayer);
+
+    //Identifying Dynamic Map Service Features
+    map.on("click", function(e) {
+        dynLayer.identify(e.latlng, function(data) {
+            console.log(data.results);
+            if(data.results.length == 1) {
+                //configurePopup(data.results[0]);
+              /*//Popup text should be in html format.  Showing the Storm Name with the type
+                popupText =  "<b>" + (data.results[0].attributes.EVENTID || data.results[0].attributes.NAME) + "<b>";*/
+
+                //Add Popup to the map when the mouse was clicked at
+/*                var popup = L.popup()
+                    .setLatLng(e.latlng)
+                    .setContent(popupText)
+                    .openOn(map);*/
+            }
+        });
+    });
     
     
 
@@ -40,3 +58,6 @@
 
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
+
+    // configure popup
+
