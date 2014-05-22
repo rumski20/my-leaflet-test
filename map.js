@@ -7,7 +7,8 @@ require([
   campusTreesFL = new FeatureLayer("http://maps.northpointgis.com/arcgis/rest/services/campus_trees/FeatureServer/0", 
     {
         refreshInterval: 0.1,
-        visible: false
+        visible: false,
+        outFields: ["*"]
     });
 });
 
@@ -105,8 +106,32 @@ function submitEdits() {
         // Query for the features with the given object ID
         campusTreesFL.queryFeatures(query, function(featureSet) {
             console.log(featureSet);
+            if ( featureSet.features.length == 1 ) {
+                var updatedFeatures = featureSet.features[0];
+                updatedFeatures.attributes.Condition = $("#conditionSelect :selected").val();
+                updatedFeatures.attributes.Inspected = "y";
+                updatedFeatures.attributes.Inspected = getTheDate();
+                console.log(updatedFeatures.attributes);
+                firePerimeterFL.applyEdits(null, [updatedFeatures], null);
+            }
         });
     });
-/*    $("#conditionSelect :selected").val()
-  firePerimeterFL.applyEdits(null, [targetGraphic], null);*/
+}
+
+function getTheDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    } 
+
+    if(mm<10) {
+        mm='0'+mm
+    } 
+
+    today = mm+'/'+dd+'/'+yyyy;
+    return today
 }
