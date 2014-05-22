@@ -2,7 +2,7 @@
     var template = "<h4>{TREE_ID}</h4><p>Species: {d_SPECIES}<br>DBH: {DBH2014ORP}</p>";
 
     // create map
-    var map = L.map('map');
+    var map = L.map('map').setView([44.97177944969965, -93.2433839753503], 18);
 
     // add tile layer (mapbox basemap)
     L.tileLayer('http://{s}.tiles.mapbox.com/v3/rumski20.i6pp2mja/{z}/{x}/{y}.png', {
@@ -37,7 +37,7 @@
     
     
 
-    // find location
+/*    // find location
     map.locate({
         setView: true,
         maxZoom: 20
@@ -56,7 +56,7 @@
     }
 
     map.on('locationfound', onLocationFound);
-    map.on('locationerror', onLocationError);
+    map.on('locationerror', onLocationError);*/
 
     // configure popup
     function configurePopup(results) {
