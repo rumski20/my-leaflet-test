@@ -19,22 +19,21 @@
         <script src="map.js"></script>
 
         <div id="my-popup">
-            <div id="my-popup-content">
-                <div id="conditionDiv">
-                    <label for="conditionSelect">Condition:</label>
-                    <select id="conditionSelect" >
-                        <option value='' disabled selected style='display:none;'>Please Choose</option>
-                        <option value="poor">Poor</option>
-                        <option value="fair">Fair</option>
-                        <option value="good">Good</option>
-                    </select>
-                </div>
+            <div id="my-popup-content"></div>
+            <div id="conditionDiv">
+                <label for="conditionSelect">Condition:</label>
+                <select id="conditionSelect" >
+                    <option value='' disabled selected style='display:none;'>Please Choose</option>
+                    <option value="poor">Poor</option>
+                    <option value="fair">Fair</option>
+                    <option value="good">Good</option>
+                </select>
             </div>
             <div id="my-popup-footer">
                 <button type="button" onclick="submitEdits();">
                     OK
                 </button>
-                <button type="button" onclick="hideLogin();" style="float:right;">
+                <button type="button" onclick="hidePopup();" style="float:right;">
                     Cancel
                 </button>
             </div>
