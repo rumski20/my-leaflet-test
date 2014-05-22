@@ -29,7 +29,7 @@
                 //Add Popup to the map when the mouse was clicked at
                 var popup = L.popup()
                     .setLatLng(e.latlng)
-                    .setContent( $("#my-popup") )
+                    .setContent( $("#my-popup")[0] )
                     .openOn(map);
             }
         });
