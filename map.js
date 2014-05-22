@@ -67,7 +67,7 @@
             if ( key == "Condition")
                 $("#my-popup-content").append( $("#conditionDiv"));
             else if (key == "TREE_ID" || key == "d_SPECIES") {
-                c = "<span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span>";
+                c = "<p><span class='my-keys'>"+key+"</span><span class='my-vals'>"+val+"</span></p>";
                 $("#my-popup-content").append(c);
             }
         });
