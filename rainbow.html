@@ -12,7 +12,7 @@
 <body>
 <div id='map'></div>
 <script>
-  var geojsonLayer = new L.GeoJSON.AJAX("http://eric.clst.org/wupl/Stuff/gz_2010_us_050_00_20m.json");
+  var geojsonLayer = new L.GeoJSON.AJAX("http://eric.clst.org/wupl/Stuff/gz_2010_us_050_00_20m.json", {dataType:"jsonp"});
   
   var map = L.map('map').fitBounds(geojsonLayer.getBounds());
   geojsonLayer.addTo(map);
