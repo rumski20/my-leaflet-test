@@ -20,20 +20,11 @@
   <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
   <script src="https://raw.github.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script>
 <body>
-  <div id="cupcake-map"></div>
+  <div id="map"></div>
   <script>
-  var cupcakeTiles = L.tileLayer('http://a.tiles.mapbox.com/v3/lyzidiamond.map-ietb6srb/{z}/{x}/{y}.png', {
-    maxZoom: 18
-  });
+  var geojsonLayer = new L.GeoJSON.AJAX("http://eric.clst.org/wupl/Stuff/gz_2010_us_050_00_20m.json");
 
-  function popUp(feature, layer) {
-    layer.bindPopup(feature.properties.name);
-  }
-
-  var geojsonLayer = new L.GeoJSON.AJAX("./cupcakes.json", {onEachFeature:popUp});
-
-  var map = L.map('cupcake-map').fitBounds(geojsonLayer.getBounds());
-  cupcakeTiles.addTo(map);
+  var map = L.map('map').fitBounds(geojsonLayer.getBounds());
   geojsonLayer.addTo(map);
 
   </script>
