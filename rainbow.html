@@ -13,7 +13,7 @@
 <div id='map'></div>
 <script>
   var geojsonLayer = new L.GeoJSON.AJAX("./states.json");
-  console.log(geojsonlayer);
+  console.log(geojsonLayer);
   
   var map = L.map('map').fitBounds(geojsonLayer.getBounds());
   geojsonLayer.addTo(map);
