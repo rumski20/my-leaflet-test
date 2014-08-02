@@ -1,31 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset=utf-8 />
-<title>Load GeoJSON from a URL</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+  <![endif]-->
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    html, body, #map {
+      height: 100%;
+      width: 100%;
+    }
+
+  </style>
+  <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+  <script src="https://raw.github.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script>
 <body>
-<div id='map'></div>
+  <div id="cupcake-map"></div>
+  <script>
+  var cupcakeTiles = L.tileLayer('http://a.tiles.mapbox.com/v3/lyzidiamond.map-ietb6srb/{z}/{x}/{y}.png', {
+    maxZoom: 18
+  });
 
-<script>
-L.mapbox.accessToken = '<your access token here>';
-var map = L.mapbox.map('map', 'examples.map-i86nkdio')
-    .setView([38.1089, 13.3545], 15);
+  function popUp(feature, layer) {
+    layer.bindPopup(feature.properties.name);
+  }
 
-// As with any other AJAX request, this technique is subject to the Same Origin Policy:
-// http://en.wikipedia.org/wiki/Same_origin_policy
-// So the CSV file must be on the same domain as the Javascript, or the server
-// delivering it should support CORS.
-var featureLayer = L.mapbox.featureLayer()
-    .loadURL('/mapbox.js/assets/data/example-single.geojson')
-    .addTo(map);
-</script>
+  var geojsonLayer = new L.GeoJSON.AJAX("./cupcakes.json", {onEachFeature:popUp});
+
+  var map = L.map('cupcake-map').fitBounds(geojsonLayer.getBounds());
+  cupcakeTiles.addTo(map);
+  geojsonLayer.addTo(map);
+
+  </script>
 </body>
 </html>
